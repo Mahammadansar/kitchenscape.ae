@@ -1,0 +1,1292 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Kitchenscape</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <!-- Place favicon.ico in the root directory -->
+   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+   <!-- CSS here -->
+   <link rel="stylesheet" href="assets/css/bootstrap.css">
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <link rel="stylesheet" href="assets/css/swiper-bundle.css">
+   <link rel="stylesheet" href="assets/css/slick.css">
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <link rel="stylesheet" href="assets/css/font-awesome-pro.css">
+   <link rel="stylesheet" href="assets/css/spacing.css">
+   <link rel="stylesheet" href="assets/css/custom-animation.css">
+   <link rel="stylesheet" href="assets/css/main.css">
+
+   <style>
+      /* Make all process step cards the same height */
+      .tp-process-area .row.gy-4 {
+         display: flex;
+         flex-wrap: wrap;
+      }
+
+      .tp-process-area .row.gy-4>[class^="col-"] {
+         display: flex;
+         flex-direction: column;
+      }
+
+      .tp-process-step {
+         flex: 1 1 auto;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         /* or center if you want vertical centering */
+      }
+
+      .notification-popup {
+         position: fixed;
+         top: 20px;
+         right: 20px;
+         background: #fff;
+         padding: 20px;
+         border-radius: 5px;
+         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+         z-index: 9999;
+         min-width: 300px;
+         animation: slideIn 0.5s ease-out;
+      }
+      .notification-content {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+      .close-notification {
+         background: none;
+         border: none;
+         font-size: 20px;
+         cursor: pointer;
+         padding: 0 5px;
+         color: #666;
+      }
+      .close-notification:hover {
+         color: #333;
+      }
+      .success {
+         border-left: 4px solid #28a745;
+         background-color: #f8fff9;
+      }
+      .error {
+         border-left: 4px solid #dc3545;
+         background-color: #fff8f8;
+      }
+      @keyframes slideIn {
+         from {
+            transform: translateX(100%);
+            opacity: 0;
+         }
+         to {
+            transform: translateX(0);
+            opacity: 1;
+         }
+      }
+      .tp-btn-border:disabled {
+         opacity: 0.7;
+         cursor: not-allowed;
+      }
+   </style>
+</head>
+
+<body>
+   <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+      <![endif]-->
+
+
+   <!-- pre loader area start -->
+   <div id="loading">
+      <div id="loading-center">
+         <div id="loading-center-absolute">
+            <div class="object" id="object_four"></div>
+            <div class="object" id="object_three"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_one"></div>
+         </div>
+      </div>
+   </div>
+   <!-- pre loader area end -->
+
+   <!-- back to top start -->
+   <div class="back-to-top-wrapper">
+      <button id="back_to_top" type="button" class="back-to-top-btn">
+         <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L6 1L1 6" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
+               stroke-linejoin="round" />
+         </svg>
+      </button>
+   </div>
+   <!-- back to top end -->
+
+   <!-- search popup start -->
+   <div class="search__popup d-none">
+      <div class="container">
+         <div class="row">
+            <div class="col-xxl-12">
+               <div class="search__wrapper">
+                  <div class="search__top d-flex justify-content-between align-items-center">
+                     <div class="search__logo">
+                        <a href="index.html">
+                           <img src="logo.png" alt="">
+                        </a>
+                     </div>
+                     <div class="search__close">
+                        <button type="button" class="search__close-btn search-close-btn">
+                           <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                              xmlns="http://www.w3.org/2000/svg">
+                              <path d="M17 1L1 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
+                                 stroke-linejoin="round" />
+                              <path d="M1 1L17 17" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
+                                 stroke-linejoin="round" />
+                           </svg>
+                        </button>
+                     </div>
+                  </div>
+                  <div class="search__form">
+                     <form action="#">
+                        <div class="search__input">
+                           <input class="search-input-field" type="text" placeholder="Type here to search...">
+                           <span class="search-focus-border"></span>
+                           <button type="submit">
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                 <path
+                                    d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z"
+                                    stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                 <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentcolor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- search popup end -->
+
+   <!-- tp-offcanvus-area-start -->
+   <div class="tpoffcanvas-area">
+      <div class="tpoffcanvas">
+         <div class="tpoffcanvas__close-btn">
+            <button class="close-btn"><i class="fal fa-times"></i></button>
+         </div>
+         <div class="tpoffcanvas__logo">
+            <a href="index.html">
+               <img src="logo.png" alt="">
+            </a>
+         </div>
+         <div class="tpoffcanvas__title">
+            <p>KitchenScape is renowned for designing wardrobes and vanity for the most exclusive and individual
+               properties, offering a tailored
+               service for all rooms within the home, including kitchens, bedrooms, bathrooms, living spaces, studies,
+               cinemas and bars.</p>
+         </div>
+         <div class="tp-main-menu-mobile d-xl-none"></div>
+         <div class="tpoffcanvas__contact-info">
+            <div class="tpoffcanvas__contact-title">
+               <h5>Contact us</h5>
+            </div>
+            <ul>
+               <li>
+                  <i class="fa-light fa-location-dot"></i>
+                  <a href="#" target="_blank">1012, SIT Tower,
+                     Silicon Oasis, Dubai, UAE.
+                     P.O. Box 455175</a>
+               </li>
+               <li>
+                  <i class="fas fa-envelope"></i>
+                  <a href="mailto:hello@kitchenscape.ae">hello@kitchenscape.ae</a>
+               </li>
+               <li>
+                  <i class="fal fa-phone-alt"></i>
+                  <a href="tel:+971585880060">+971 58 588 0060</a>
+               </li>
+            </ul>
+         </div>
+         <!-- <div class="tpoffcanvas__input">
+            <div class="tpoffcanvas__input-title">
+               <h4>Get UPdate</h4>
+            </div>
+            <form action="#">
+               <div class="p-relative">
+                  <input type="text" placeholder="Enter mail">
+                  <button>
+                     <i class="fas fa-paper-plane"></i>
+                  </button>
+               </div>
+            </form>
+         </div> -->
+         <div class="tpoffcanvas__social">
+            <div class="social-icon">
+               <a href="https://wa.me/+971568475760"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.instagram.com/kitchenscape.ae/"><i class="fab fa-instagram"></i></a>
+               <a href="https://www.facebook.com/kitchenscape.ae/"><i class="fab fa-facebook-f"></i></a>
+               <a href="https://www.linkedin.com/company/kitchenscape-ae/"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="body-overlay"></div>
+   <!-- tp-offcanvus-area-end -->
+
+   <!-- Notification Popup -->
+   <div id="notification-popup" class="notification-popup" style="display: none;">
+      <div class="notification-content">
+         <span id="notification-message"></span>
+         <button class="close-notification">&times;</button>
+      </div>
+   </div>
+
+   <!-- header area start -->
+   <div id="header-sticky" class="tp-header-area tp-header-tranparent tp-header-style-4 tp-onepage-header">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col-xl-2 col-lg-4 col-6">
+               <div class="tp-header-logo">
+                  <a href="index.html"><img src="logo.png" alt=""></a>
+               </div>
+            </div>
+            <div class="col-xl-8 d-none d-xl-block">
+               <div class="tp-header-menu">
+                  <nav class="tp-main-menu-content">
+                     <ul class="tp-onepage-menu">
+                        <li class="has-dropdown-2">
+                           <a class="active" href="#hero-one-page">Home</a>
+                        </li>
+                        <li><a href="#about">About Us </a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li> <a href="#process">Process</a></li>
+                        <!-- <li><a href="#team-one-page">Team</a></li> -->
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#contact">Contact us</a> </li>
+                     </ul>
+                  </nav>
+               </div>
+            </div>
+            <div class="col-xl-2 col-lg-8 col-6">
+               <div class="tp-header-right d-flex align-items-center justify-content-end">
+                  <div class="tp-header-bar">
+                     <button class="tp-menu-bar"><i class="fa-solid fa-bars"></i></button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- header area end -->
+
+   <div id="smooth-wrapper">
+      <div id="smooth-content">
+
+         <main>
+
+            <!-- hero area start -->
+            <div id="hero-one-page" class="tp-slider-2-area tp-slider-2-height tp-slider-2-bg fix grey-bg p-relative">
+               <div class="container">
+                  <div class="tp-slider-2-wrap p-relative">
+                     <div class="row">
+                        <div class="col-xl-7 col-lg-6">
+                           <div class="tp-slider-2-content">
+                              <h2 class="tp-slider-title tp-split-text tp-split-in-right text-black mb-25">Bespoke
+                                 Kitchens, Wardrobes,
+                                 Vanity, TV Cabinets for luxury & comfort</h2>
+                              <p class="mb-40">KitchenScape is renowned for designing wardrobes and vanity for the most
+                                 exclusive and individual properties, offering a tailored
+                                 service for all rooms within the home, including kitchens, bedrooms, bathrooms, living
+                                 spaces, studies, cinemas and bars. </p>
+                              <a class="tp-btn-black theme-bg mb-20" href="#about">
+                                 <span>Read More</span>
+                              </a>
+                              <!-- <div class="tp-hero-2-funfact-box d-flex justify-content-between">
+                                 <div class="tp-hero-2-funfact">
+                                    <h5><i class="purecounter" data-purecounter-duration="1"
+                                          data-purecounter-end="40">0</i>k
+                                    </h5>
+                                    <span>Winning award</span>
+                                 </div>
+                                 <div class="tp-hero-2-funfact">
+                                    <h5><i class="purecounter" data-purecounter-duration="1"
+                                          data-purecounter-end="100">0</i>k
+                                    </h5>
+                                    <span>Complete project</span>
+                                 </div>
+                                 <div class="tp-hero-2-funfact">
+                                    <h5><i class="purecounter" data-purecounter-duration="1"
+                                          data-purecounter-end="800">0</i>k
+                                    </h5>
+                                    <span>Client reviewt</span>
+                                 </div>
+                              </div> -->
+                           </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-6">
+                           <div class="tp-slider-2-wrapper p-relative">
+                              <div class="swiper-container tp-slider-2-active">
+                                 <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                       <div class="tp-slider-2-thumb">
+                                          <img src="images/ser-img-1.jpg" alt="">
+                                       </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                       <div class="tp-slider-2-thumb">
+                                          <img src="images/ser-img-2.jpg" alt="">
+                                       </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                       <div class="tp-slider-2-thumb">
+                                          <img src="images/ser-img-3.jpg" alt="">
+                                       </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                       <div class="tp-slider-2-thumb">
+                                          <img src="images/ser-img-4.jpg" alt="">
+                                       </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                       <div class="tp-slider-2-thumb">
+                                          <img src="images/ser-img-5.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="tp-slider-icon">
+                                 <span>
+                                    <svg width="49" height="49" viewBox="0 0 49 49" fill="none"
+                                       xmlns="http://www.w3.org/2000/svg">
+                                       <path
+                                          d="M47.5077 23.1257L40.6927 21.1782C37.6238 20.313 34.8282 18.6747 32.5735 16.42C30.3188 14.1653 28.6805 11.3697 27.8153 8.30073L25.8678 1.48573C25.7698 1.2473 25.6032 1.04336 25.3891 0.899839C25.175 0.756317 24.923 0.679688 24.6652 0.679688C24.4075 0.679688 24.1555 0.756317 23.9414 0.899839C23.7273 1.04336 23.5607 1.2473 23.4627 1.48573L21.5152 8.30073C20.65 11.3697 19.0117 14.1653 16.757 16.42C14.5023 18.6747 11.7067 20.313 8.63775 21.1782L1.82275 23.1257C1.56108 23.2 1.33077 23.3576 1.16678 23.5746C1.00279 23.7916 0.914062 24.0562 0.914062 24.3282C0.914062 24.6002 1.00279 24.8648 1.16678 25.0818C1.33077 25.2989 1.56108 25.4565 1.82275 25.5307L8.63775 27.4782C11.7067 28.3435 14.5023 29.9818 16.757 32.2365C19.0117 34.4912 20.65 37.2868 21.5152 40.3557L23.4627 47.1707C23.537 47.4324 23.6946 47.6627 23.9116 47.8267C24.1287 47.9907 24.3932 48.0794 24.6652 48.0794C24.9373 48.0794 25.2018 47.9907 25.4189 47.8267C25.6359 47.6627 25.7935 47.4324 25.8678 47.1707L27.8153 40.3557C28.6805 37.2868 30.3188 34.4912 32.5735 32.2365C34.8282 29.9818 37.6238 28.3435 40.6927 27.4782L47.5077 25.5307C47.7694 25.4565 47.9997 25.2989 48.1637 25.0818C48.3277 24.8648 48.4164 24.6002 48.4164 24.3282C48.4164 24.0562 48.3277 23.7916 48.1637 23.5746C47.9997 23.3576 47.7694 23.2 47.5077 23.1257Z"
+                                          fill="currentcolor" />
+                                    </svg>
+                                 </span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- hero area end -->
+
+            <!-- about area start -->
+            <div id="about" class="tp-about-4-area pt-150 pb-140">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-6 col-lg-6">
+                        <div class="tp-about-4-left p-relative d-flex justify-content-between">
+                           <div class="tp-about-4-circle">
+                              <span></span>
+                           </div>
+                           <div class="tp-about-4-thumb-1">
+                              <div class="tp-hover-distort-wrapper">
+                                 <div class="canvas"></div>
+                                 <div class="tp-hover-distort" data-displacementImage="assets/img/webgl/10.jpg">
+                                    <img class="tp-hover-distort-img front" src="images/about2.jpg" alt="">
+                                    <img class="tp-hover-distort-img back" src="images/about2.jpg" alt="">
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="tp-about-4-thumb-2">
+                              <div class="tp-hover-distort-wrapper">
+                                 <div class="canvas"></div>
+                                 <div class="tp-hover-distort" data-displacementImage="assets/img/webgl/10.jpg">
+                                    <img class="tp-hover-distort-img front" src="images/about1.jpg" alt="">
+                                    <img class="tp-hover-distort-img back" src="images/about1.jpg" alt="">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6">
+                        <div class="tp-about-4-right">
+                           <div class="tp-about-4-title-box mb-20">
+                              <span class="tp-section-subtitle tp-split-text tp-split-in-right">About us</span>
+                              <h3 class="tp-section-title tp-split-text tp-split-in-right ">Bespoke Interiors for Every
+                                 Room in Your Home</h3>
+                           </div>
+                           <div class="tp-about-4-text">
+                              <p>KitchenScape is renowned for designing kitchens, wardrobes and vanity for the most
+                                 exclusive and individual properties, offering a tailored service for all rooms within
+                                 the home, including kitchens, bedrooms, bathrooms, living spaces, studies and bars.</p>
+                              <p>Living the belief that your home should reflect you and your family, KitchenScape
+                                 creates inspirational living environments that raise the spirit, free the imagination
+                                 and tell your story by design.</p>
+                           </div>
+                           <div class="row">
+                              <h5 class="mb-2">Why Kitchenscape?</h5>
+                              <div class="col-xl-6 col-lg-6 col-md-5 col-sm-6">
+                                 <div class="tp-about-4-list">
+                                    <ul>
+                                       <li><i class="fa-solid fa-check"></i>Temporary Kitchens</li>
+                                       <li><i class="fa-solid fa-check"></i>Quick Instant Kitchens</li>
+                                       <li><i class="fa-solid fa-check"></i>Bespoke Solutions</li>
+                                    </ul>
+                                 </div>
+                              </div>
+                              <div class="col-xl-6 col-lg-6 col-md-5 col-sm-6">
+                                 <div class="tp-about-4-list">
+                                    <ul>
+                                       <li><i class="fa-solid fa-check"></i>Being Honest & Straightforward</li>
+                                       <li><i class="fa-solid fa-check"></i>Turnkey Renovations & Solutions</li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- <a class="tp-btn-black" href="about-us.html">
+                              <span>Read More</span>
+                           </a> -->
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- about area end -->
+
+            <!-- service area start -->
+            <div id="services" class="tp-service-2-area grey-bg tp-service-style-3 pt-80 tp-service-style-4">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="tp-service-2-title-box text-center mb-60">
+                           <span class="tp-section-subtitle tp-split-text tp-split-in-right">Our Service</span>
+                           <h3 class="tp-section-title tp-split-text tp-split-in-right">Tailored Design Solutions for
+                              Kitchens,<br>
+                              Wardrobes & More</h3>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".3s">
+                        <div class="tp-service-2-item d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Hammer -->
+                                    <path d="M40 10 L46 16 L42 20 L36 14 Z" fill="#6D4C41" />
+                                    <rect x="35" y="14" width="2" height="20" transform="rotate(-45 35 14)"
+                                       fill="#8D6E63" />
+
+                                    <!-- Wrench -->
+                                    <path
+                                       d="M18 38c-2-2-2-5 0-7l5-5c2-2 5-2 7 0l3 3-3 3c-1 1-1 2 0 3l3 3c1 1 2 1 3 0l3-3 3 3-5 5c-2 2-5 2-7 0z"
+                                       fill="#90A4AE" />
+
+                                    <!-- Circle Background -->
+                                    <circle cx="32" cy="32" r="30" stroke="#B0BEC5" stroke-width="2" fill="none" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">RENOVATIONS</a> </h4>
+                              <div class="tp-service-2-text">
+                                 <p>We work closely with you to ensure your new kitchen works as beautifully as it
+                                    looks.
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".5s">
+                        <div class="tp-service-2-item active d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- TV Screen -->
+                                    <rect x="16" y="10" width="32" height="20" rx="2" fill="#212121" stroke="#424242"
+                                       stroke-width="2" />
+                                    <line x1="22" y1="18" x2="42" y2="18" stroke="#616161" stroke-width="1" />
+                                    <line x1="22" y1="22" x2="42" y2="22" stroke="#616161" stroke-width="1" />
+
+                                    <!-- TV Stand Base -->
+                                    <rect x="8" y="32" width="48" height="20" rx="2" fill="#BCAAA4" stroke="#6D4C41"
+                                       stroke-width="1.5" />
+
+                                    <!-- Drawers -->
+                                    <line x1="32" y1="32" x2="32" y2="52" stroke="#6D4C41" stroke-width="1.2" />
+                                    <circle cx="24" cy="42" r="1.5" fill="#4E342E" />
+                                    <circle cx="40" cy="42" r="1.5" fill="#4E342E" />
+
+                                    <!-- TV Leg -->
+                                    <rect x="30" y="30" width="4" height="2" fill="#424242" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">TV CABINETS</a> </h4>
+                              <div class="tp-service-2-text">
+                                 <p>Designed TV stands do more than just support televisions. Their handcrafted designs
+                                    reflect the individuality of your style
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".7s">
+                        <div class="tp-service-2-item d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Mirror Frame -->
+                                    <rect x="20" y="6" width="24" height="18" rx="2" fill="#E0F7FA" stroke="#006064"
+                                       stroke-width="2" />
+                                    <line x1="22" y1="10" x2="42" y2="10" stroke="#006064" stroke-width="1.2" />
+                                    <line x1="22" y1="14" x2="42" y2="14" stroke="#006064" stroke-width="1.2" />
+
+                                    <!-- Countertop -->
+                                    <rect x="12" y="24" width="40" height="6" rx="1" fill="#B0BEC5" stroke="#455A64"
+                                       stroke-width="1.5" />
+
+                                    <!-- Sink Basin -->
+                                    <rect x="26" y="24" width="12" height="4" rx="1" fill="#90A4AE" />
+
+                                    <!-- Faucet -->
+                                    <path d="M32 20 V24" stroke="#37474F" stroke-width="2" />
+
+                                    <!-- Vanity Base / Cabinets -->
+                                    <rect x="12" y="30" width="40" height="22" rx="2" fill="#CFD8DC" stroke="#455A64"
+                                       stroke-width="1.5" />
+                                    <line x1="32" y1="30" x2="32" y2="52" stroke="#455A64" stroke-width="1.2" />
+                                    <circle cx="24" cy="42" r="1.5" fill="#455A64" />
+                                    <circle cx="40" cy="42" r="1.5" fill="#455A64" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">VANITY</a> </h4>
+                              <div class="tp-service-2-text">
+                                 <p>We take on a modern approach for timeless vanities. Reinvent your bathroom
+                                    experience with designed vanity
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".8s">
+                        <div class="tp-service-2-item d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Counter -->
+                                    <rect x="8" y="20" width="48" height="6" fill="#B0BEC5" stroke="#455A64"
+                                       stroke-width="1.5" />
+
+                                    <!-- Cabinets -->
+                                    <rect x="8" y="26" width="48" height="20" fill="#CFD8DC" stroke="#455A64"
+                                       stroke-width="1.5" />
+                                    <!-- Cabinet doors -->
+                                    <line x1="32" y1="26" x2="32" y2="46" stroke="#455A64" stroke-width="1.5" />
+                                    <circle cx="24" cy="36" r="1.5" fill="#455A64" />
+                                    <circle cx="40" cy="36" r="1.5" fill="#455A64" />
+
+                                    <!-- Sink basin -->
+                                    <rect x="22" y="12" width="20" height="8" rx="1" fill="#90A4AE" stroke="#37474F"
+                                       stroke-width="1.2" />
+                                    <!-- Faucet -->
+                                    <path d="M32 12 V8 C32 6 36 6 36 8 V12" stroke="#37474F" stroke-width="2"
+                                       fill="none" />
+
+                                    <!-- Bottles (liquor) -->
+                                    <rect x="10" y="8" width="4" height="12" rx="1" fill="#8D6E63" />
+                                    <rect x="16" y="6" width="4" height="14" rx="1" fill="#6D4C41" />
+                                    <rect x="50" y="6" width="4" height="14" rx="1" fill="#795548" />
+                                    <rect x="44" y="8" width="4" height="12" rx="1" fill="#A1887F" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">WET BAR</a> </h4>
+                              <div class="tp-service-2-text">
+                                 <p>Since a wet bar is all about fun, it should be a place where you feel like you can
+                                    take design risks or step outside your comfort zone
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".9s">
+                        <div class="tp-service-2-item d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none">
+                                    <!-- Outer structure -->
+                                    <rect x="8" y="4" width="48" height="56" rx="2" stroke="#333" stroke-width="2"
+                                       fill="#fff" />
+
+                                    <!-- Center divider (split doors) -->
+                                    <line x1="32" y1="4" x2="32" y2="60" stroke="#333" stroke-width="2" />
+
+                                    <!-- Left shelves -->
+                                    <line x1="12" y1="14" x2="28" y2="14" stroke="#888" stroke-width="1.5" />
+                                    <line x1="12" y1="22" x2="28" y2="22" stroke="#888" stroke-width="1.5" />
+                                    <line x1="12" y1="30" x2="28" y2="30" stroke="#888" stroke-width="1.5" />
+
+                                    <!-- Right hanging rod -->
+                                    <line x1="36" y1="16" x2="52" y2="16" stroke="#666" stroke-width="2" />
+                                    <!-- Hangers (simplified) -->
+                                    <circle cx="40" cy="16" r="1.5" fill="#666" />
+                                    <circle cx="44" cy="16" r="1.5" fill="#666" />
+                                    <circle cx="48" cy="16" r="1.5" fill="#666" />
+
+                                    <!-- Door handles -->
+                                    <circle cx="28" cy="32" r="2" fill="#333" />
+                                    <circle cx="36" cy="32" r="2" fill="#333" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">WALK IN CLOSETS</a> </h4>
+                              <div class="tp-service-2-text">
+                                 <p>Designs that fit your style and budget. We proudly offer unique closet systems to
+                                    organize both your wardrobe and your life.
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-30  wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay="1s">
+                        <div class="tp-service-2-item d-flex align-items-center">
+                           <div class="tp-service-2-icon">
+                              <span>
+                                 <svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Outer frame of wardrobe -->
+                                    <rect x="10" y="4" width="44" height="56" rx="2" stroke="#333" stroke-width="2"
+                                       fill="#fff" />
+
+                                    <!-- Divider between doors -->
+                                    <line x1="32" y1="4" x2="32" y2="60" stroke="#333" stroke-width="2" />
+
+                                    <!-- Door handles -->
+                                    <circle cx="24" cy="32" r="2" fill="#333" />
+                                    <circle cx="40" cy="32" r="2" fill="#333" />
+
+                                    <!-- Bottom line (base) -->
+                                    <line x1="10" y1="60" x2="54" y2="60" stroke="#333" stroke-width="2" />
+                                 </svg>
+
+                              </span>
+                           </div>
+                           <div class="tp-service-2-content">
+                              <h4 class="tp-service-2-title"><a href="#contact">WARDROBES</a></h4>
+                              <div class="tp-service-2-text">
+                                 <p>We design modular wardrobes in a variety of sizes, materials and finishes to suit
+                                    your tastes and budget.
+                                 </p>
+                                 <a href="#contact">Read More</a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- service area end -->
+
+            <!-- service area start -->
+            <div id="process" class="tp-process-area  pt-140 pb-70">
+               <div class="container">
+                  <div class="tp-process-title-wrap mb-60">
+                     <div class="row align-items-end">
+                        <div class="col-xl-7 col-lg-7">
+                           <div class="tp-process-title-box">
+                              <span class="tp-section-subtitle">Our Process</span>
+                              <h3 class="tp-section-title">
+                                 Creative. Efficient. Detailed.<br />
+                                 Your Dream Kitchen, Delivered
+                              </h3>
+                           </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5">
+                           <div class="tp-process-top-text">
+                              <p class="mb-0">
+                                 KitchenScape's design process is creative, efficient, and detailed
+                                 to ensure we deliver your dream kitchen with precision and
+                                 satisfaction at every step.
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="row gy-4">
+                     <!-- Step 1 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-comments fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 1: Initial Consultation</h5>
+                           <p>
+                              Discuss existing plans or brainstorm new ideas. Most projects
+                              require engineering and architectural inputs.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 2 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-pencil-ruler fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 2: Bespoke Designing</h5>
+                           <p>
+                              Meet our designers to refine ideas, align expectations, and maximize
+                              concept and layout efficiency.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 3 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-file-invoice-dollar fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 3: Project Quotation</h5>
+                           <p>
+                              We provide a detailed quote based on approved plans—balancing
+                              budget, ergonomics, and excellence.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 4 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-file-contract fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 4: Acceptance & Contract</h5>
+                           <p>
+                              On approval, we formalize a legal contract to ensure transparency and
+                              protect both parties.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 5 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-tools fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 5: MEP Consultation</h5>
+                           <p>
+                              We provide detailed MEP drawings for seamless installations of
+                              kitchens, wardrobes, vanities, and more.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 6 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-ruler-combined fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 6: Precision</h5>
+                           <p>
+                              Precision is ensured from start to finish for durability, perfect fit,
+                              and timely delivery.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 7 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-check-double fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 7: Code of Compliance</h5>
+                           <p>
+                              Post final inspection approval, materials are delivered and installations
+                              begin at the designated site.
+                           </p>
+                        </div>
+                     </div>
+
+                     <!-- Step 8 -->
+                     <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="tp-process-step text-center p-4 bg-white rounded shadow">
+                           <div class="tp-process-icon mb-3">
+                              <i class="fa-solid fa-house-user fa-2x text-secondary"></i>
+                           </div>
+                           <h5 class="tp-process-title">Step 8: Move-in</h5>
+                           <p>
+                              After completing the "snag list", your kitchen is move-in ready and
+                              built to perfection.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+
+            <!-- service area end -->
+
+            <!-- project area start -->
+            <div id="collection" class="tp-gallery-area grey-bg pt-150 pb-200">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-12">
+                        <div class="tp-gallery-title-box text-center mb-60">
+                           <span class="tp-section-subtitle tp-split-text tp-split-in-right">Latest Gallery</span>
+                           <h3 class="tp-section-title tp-split-text tp-split-in-right">Inspiring Interiors Exceptional
+                              <br> Of Experiences
+                           </h3>
+                        </div>
+                     </div>
+                     <div class="col-xl-12">
+                        <div class="tp-gallery-wrapper">
+                           <div class="swiper-container tp-gallery-active">
+                              <div class="swiper-wrapper">
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/coll-1.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/vanity.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/coll-3.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/coll-4.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/coll-5.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="tp-gallery-item p-relative">
+                                       <div class="tp-gallery-thumb">
+                                          <img src="images/tv-cabinate-va.jpg" alt="">
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- project area end -->
+
+            <!-- funfact area end -->
+
+            <!-- funfact area end -->
+
+            <!-- team area start -->
+            <div id="contact" class="tp-contact-area p-relative black-bg fix pt-115 pb-120 z-index">
+               <div class="tp-contact-shape-1">
+                  <img src="assets/img/contact/shape-1-1.png" alt="">
+               </div>
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-6 col-lg-6">
+                        <div class="tp-contact-left">
+                           <div class="tp-contact-title-box mb-20">
+                              <span class="tp-section-subtitle tp-split-text tp-split-in-right">Get in Touch</span>
+                              <h3 class="tp-section-title text-white tp-split-text tp-split-in-right">
+                                 Have Questions?<br>
+                                 We're Here to Help
+                              </h3>
+                           </div>
+                           <div class="tp-contact-text">
+                              <p>Contact our team today and let's bring your dream kitchen to life with expert guidance
+                                 and tailored solutions.</p>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-xl-6 col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".7s">
+                        <div class="tp-contact-right">
+                          <form id="contactForm" action="contact.php" method="POST">
+                              <div class="row">
+                                 <div class="col-lg-6 col-md-6 mb-20">
+                                    <div class="tp-contact-input-box">
+                                       <input type="email" name="email" placeholder="Your Email" required>
+                                       <div class="tp-contact-icon">
+                                          <span>
+                                             <svg width="16" height="15" viewBox="0 0 16 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                   d="M14.9727 1.76172L13.2227 13.1094C13.1953 13.3828 13.0312 13.6289 12.7852 13.7656C12.6484 13.8203 12.5117 13.875 12.3477 13.875C12.2383 13.875 12.1289 13.8477 12.0195 13.793L8.68359 12.3984L7.28906 14.4766C7.17969 14.668 6.98828 14.75 6.79688 14.75C6.49609 14.75 6.25 14.5039 6.25 14.2031V11.5781C6.25 11.3594 6.30469 11.168 6.41406 11.0312L12.375 3.375L4.33594 10.6211L1.51953 9.44531C1.21875 9.30859 1 9.03516 1 8.67969C0.972656 8.29688 1.13672 8.02344 1.4375 7.85938L13.6875 0.886719C13.9609 0.722656 14.3438 0.722656 14.6172 0.914062C14.8906 1.10547 15.0273 1.43359 14.9727 1.76172Z"
+                                                   fill="currentcolor" />
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-6 col-md-6 mb-20">
+                                    <div class="tp-contact-input-box">
+                                     <input type="text" name="phone" placeholder="Your Phone" required>
+                                       <div class="tp-contact-icon">
+                                          <span>
+                                             <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                   d="M13.9727 11.332L13.3164 14.0938C13.2344 14.5039 12.9062 14.7773 12.4961 14.7773C5.60547 14.75 0 9.14453 0 2.25391C0 1.84375 0.246094 1.51562 0.65625 1.43359L3.41797 0.777344C3.80078 0.695312 4.21094 0.914062 4.375 1.26953L5.66016 4.25C5.79688 4.60547 5.71484 5.01562 5.41406 5.23438L3.9375 6.4375C4.86719 8.32422 6.39844 9.85547 8.3125 10.7852L9.51562 9.30859C9.73438 9.03516 10.1445 8.92578 10.5 9.0625L13.4805 10.3477C13.8359 10.5391 14.0547 10.9492 13.9727 11.332Z"
+                                                   fill="currentcolor" />
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 mb-20">
+                                    <div class="tp-contact-input-box">
+                                     <input type="text" name="address" placeholder="Your Address" required>
+                                       <div class="tp-contact-icon">
+                                          <span>
+                                             <svg width="11" height="15" viewBox="0 0 11 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                   d="M4.59375 14.4219C3.17188 12.6445 0 8.40625 0 6C0 3.10156 2.32422 0.75 5.25 0.75C8.14844 0.75 10.5 3.10156 10.5 6C10.5 8.40625 7.30078 12.6445 5.87891 14.4219C5.55078 14.832 4.92188 14.832 4.59375 14.4219ZM5.25 7.75C6.20703 7.75 7 6.98438 7 6C7 5.04297 6.20703 4.25 5.25 4.25C4.26562 4.25 3.5 5.04297 3.5 6C3.5 6.98438 4.26562 7.75 5.25 7.75Z"
+                                                   fill="currentcolor" />
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-lg-12 mb-20">
+                                    <div class="tp-contact-textarea-box">
+                                  <textarea name="message" placeholder="Write Message.." required></textarea>
+                                       <div class="tp-contact-icon">
+                                          <span>
+                                             <svg width="14" height="11" viewBox="0 0 14 11" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                   d="M12.6875 0.5C13.3984 0.5 14 1.10156 14 1.8125C14 2.25 13.7812 2.63281 13.4531 2.87891L7.51953 7.33594C7.19141 7.58203 6.78125 7.58203 6.45312 7.33594L0.519531 2.87891C0.191406 2.63281 0 2.25 0 1.8125C0 1.10156 0.574219 0.5 1.3125 0.5H12.6875ZM5.93359 8.04688C6.5625 8.51172 7.41016 8.51172 8.03906 8.04688L14 3.5625V9.25C14 10.2344 13.207 11 12.25 11H1.75C0.765625 11 0 10.2344 0 9.25V3.5625L5.93359 8.04688Z"
+                                                   fill="currentcolor" />
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <button type="submit" class="tp-btn-border height w-100"><span>Send Message</span></button>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- team area end -->
+
+            <!-- product area start -->
+
+
+            <!-- product area end -->
+
+            <!-- blog area start -->
+
+            <!-- blog area end -->
+
+         </main>
+
+         <footer>
+
+            <!-- footer area start -->
+            <div class="tp-footer-area pt-95 pb-50">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6 mb-50 wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".3s">
+                        <div class="tp-footer-widget footer-cols-1">
+                           <div class="tp-footer-logo">
+                              <a href="index.html">
+                                 <img src="logo.png" alt="">
+                              </a>
+                           </div>
+                           <div class="tp-footer-text pb-10">
+                              <p>KitchenScape creates bespoke wardrobes and vanities, offering tailored designs for every room in your home.</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6 mb-50 wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".5s">
+                        <div class="tp-footer-widget footer-cols-2">
+                           <h4 class="tp-footer-title">Follow Us</h4>
+                           <div class="tp-footer-list">
+                              <ul>
+                                 <li><a href="https://www.instagram.com/kitchenscape.ae" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+                                 <li><a href="https://m.facebook.com/kitchenscape.ae/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                                 <li><a href="https://www.linkedin.com/company/kitchenscape-ae/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6 mb-50 wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".7s">
+                        <div class="tp-footer-widget footer-cols-3">
+                           <h4 class="tp-footer-title">Sections</h4>
+                           <div class="tp-footer-list">
+                              <ul>
+                                 <li><a href="#about">About Us </a></li>
+                                 <li><a href="#services">Services</a></li>
+                                 <li> <a href="#process">Process</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 mb-50 wow tpfadeUp" data-wow-duration=".9s"
+                        data-wow-delay=".9s">
+                        <div class="tp-footer-widget d-flex justify-content-lg-end footer-cols-4">
+                           <div class="tp-footer-contact-box">
+                              <h4 class="tp-footer-title">Office Information</h4>
+                              <div class="tp-footer-contact">
+                                 <ul>
+                                    <li>
+                                       <span>
+                                          <svg width="11" height="15" viewBox="0 0 11 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M4.59375 14.4219C3.17188 12.6445 0 8.40625 0 6C0 3.10156 2.32422 0.75 5.25 0.75C8.14844 0.75 10.5 3.10156 10.5 6C10.5 8.40625 7.30078 12.6445 5.87891 14.4219C5.55078 14.832 4.92188 14.832 4.59375 14.4219ZM5.25 7.75C6.20703 7.75 7 6.98438 7 6C7 5.04297 6.20703 4.25 5.25 4.25C4.26562 4.25 3.5 5.04297 3.5 6C3.5 6.98438 4.26562 7.75 5.25 7.75Z"
+                                                fill="currentcolor" />
+                                          </svg>
+                                       </span>
+                                       <a
+                                          href="#">1901
+                                          1012, SIT Tower, Silicon Oasis,<br> Dubai, UAE.
+                                          P.O. Box 455175</a>
+                                    </li>
+                                    <li>
+                                       <span>
+                                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M13.9727 11.332L13.3164 14.0938C13.2344 14.5039 12.9062 14.7773 12.4961 14.7773C5.60547 14.75 0 9.14453 0 2.25391C0 1.84375 0.246094 1.51562 0.65625 1.43359L3.41797 0.777344C3.80078 0.695312 4.21094 0.914062 4.375 1.26953L5.66016 4.25C5.79688 4.60547 5.71484 5.01562 5.41406 5.23438L3.9375 6.4375C4.86719 8.32422 6.39844 9.85547 8.3125 10.7852L9.51562 9.30859C9.73438 9.03516 10.1445 8.92578 10.5 9.0625L13.4805 10.3477C13.8359 10.5391 14.0547 10.9492 13.9727 11.332Z"
+                                                fill="currentcolor" />
+                                          </svg>
+                                       </span>
+                                       <a href="tel:+971568475760">+971 56 847 5760</a>
+                                    </li>
+                                    <li>
+                                       <span>
+                                          <svg width="14" height="11" viewBox="0 0 14 11" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M12.6875 0.5C13.3984 0.5 14 1.10156 14 1.8125C14 2.25 13.7812 2.63281 13.4531 2.87891L7.51953 7.33594C7.19141 7.58203 6.78125 7.58203 6.45312 7.33594L0.519531 2.87891C0.191406 2.63281 0 2.25 0 1.8125C0 1.10156 0.574219 0.5 1.3125 0.5H12.6875ZM5.93359 8.04688C6.5625 8.51172 7.41016 8.51172 8.03906 8.04688L14 3.5625V9.25C14 10.2344 13.207 11 12.25 11H1.75C0.765625 11 0 10.2344 0 9.25V3.5625L5.93359 8.04688Z"
+                                                fill="currentcolor" />
+                                          </svg>
+                                       </span>
+                                       <a href="mailto:hello@kitchenscape.ae">hello@kitchenscape.ae</a>
+                                    </li>
+                                 </ul>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- footer area end -->
+
+            <!-- copyright area start -->
+            <div class="tp-copyright-area tp-copyright-border tp-copyright-height">
+               <div class="container">
+                  <div class="row align-items-center">
+                     <div class="col-lg-12 col-md-12 wow tpfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">
+                        <div class="tp-copyright-left text-center text-md-start">
+                           <p>© 2025 KITCHENSCAPE DOMESTIC KITCHENS L.L.C | All Rights Reserved</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- copyright area end -->
+
+         </footer>
+
+      </div>
+   </div>
+   <a href="https://wa.me/+971568475760" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+   </a>
+
+   <style>
+      .whatsapp-float {
+         position: fixed;
+         bottom: 60px;
+         /* distance from bottom */
+         left: 20px;
+         /* distance from left */
+         background-color: #25D366;
+         color: white;
+         border-radius: 50%;
+         width: 50px;
+         height: 50px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-size: 28px;
+         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+         z-index: 1000;
+         text-decoration: none;
+         transition: background-color 0.3s ease;
+      }
+
+      .whatsapp-float:hover {
+         background-color: #128c4a;
+         color: white;
+      }
+   </style>
+   <!-- JS here -->
+   <script src="assets/js/vendor/jquery.js"></script>
+   <script src="assets/js/three.js"></script>
+   <script src="assets/js/gsap.js"></script>
+   <script src="assets/js/gsap-scroll-to-plugin.js"></script>
+   <script src="assets/js/gsap-scroll-trigger.js"></script>
+   <script src="assets/js/gsap-scroll-smoother.js"></script>
+   <script src="assets/js/gsap-split-text.js"></script>
+   <script src="assets/js/hover-effect.umd.js"></script>
+   <script src="assets/js/vendor/waypoints.js"></script>
+   <script src="assets/js/bootstrap-bundle.js"></script>
+   <script src="assets/js/ajax-form.js"></script>
+   <script src="assets/js/imagesloaded-pkgd.js"></script>
+   <script src="assets/js/isotope-pkgd.js"></script>
+   <script src="assets/js/jarallax.js"></script>
+   <script src="assets/js/magnific-popup.js"></script>
+   <script src="assets/js/nice-select.js"></script>
+   <script src="assets/js/purecounter.js"></script>
+   <script src="assets/js/range-slider.js"></script>
+   <script src="assets/js/wow.js"></script>
+   <script src="assets/js/slick.js"></script>
+   <script src="assets/js/swiper-bundle.js"></script>
+   <script src="assets/js/main.js"></script>
+
+   <script>
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+         e.preventDefault();
+         
+         const formData = new FormData(this);
+         const submitButton = this.querySelector('button[type="submit"]');
+         
+         // Disable submit button while processing
+         submitButton.disabled = true;
+         submitButton.innerHTML = '<span>Sending...</span>';
+         
+         fetch('contact.php', {
+            method: 'POST',
+            body: formData
+         })
+         .then(response => {
+            // First check if the response is ok
+            if (!response.ok) {
+               throw new Error('Network response was not ok');
+            }
+            // Try to parse the response as JSON
+            return response.text().then(text => {
+               try {
+                  return JSON.parse(text);
+               } catch (e) {
+                  console.error('Error parsing JSON:', text);
+                  throw new Error('Invalid JSON response from server');
+               }
+            });
+         })
+         .then(data => {
+            console.log('Server response:', data); // Debug log
+            
+            const popup = document.getElementById('notification-popup');
+            const message = document.getElementById('notification-message');
+            
+            // Check if the email was actually sent (based on your server logs)
+            if (data.status === 'success' || data.message.includes('Message sent successfully')) {
+               popup.className = 'notification-popup success';
+               message.textContent = 'Message sent successfully! We will contact you soon.';
+               this.reset(); // Clear the form
+            } else {
+               popup.className = 'notification-popup error';
+               message.textContent = data.message || 'An error occurred. Please try again.';
+            }
+            
+            popup.style.display = 'block';
+            
+            // Hide popup after 5 seconds
+            setTimeout(() => {
+               popup.style.display = 'none';
+            }, 5000);
+         })
+         .catch(error => {
+            console.error('Error:', error);
+            const popup = document.getElementById('notification-popup');
+            const message = document.getElementById('notification-message');
+            
+            popup.className = 'notification-popup error';
+            message.textContent = 'An error occurred. Please try again.';
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+               popup.style.display = 'none';
+            }, 5000);
+         })
+         .finally(() => {
+            // Re-enable submit button
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<span>Send Message</span>';
+         });
+      });
+      
+      // Close notification when clicking the close button
+      document.querySelector('.close-notification').addEventListener('click', function() {
+         document.getElementById('notification-popup').style.display = 'none';
+      });
+   </script>
+
+</body>
+
+
+</html>
